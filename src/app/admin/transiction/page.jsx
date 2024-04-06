@@ -46,9 +46,9 @@ const page = () => {
                       clickOnImg={handleClick}
                       id={id}
                       tid={data._id}
-                      name={data.user.name}
-                      location={data.user.location}
-                      phone={data.user.phone}
+                      name={data.user?.name}
+                      location={data.user?.location}
+                      phone={data.user?.phone}
                     />
                   );
                 })
