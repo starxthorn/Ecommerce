@@ -4,10 +4,10 @@ import Order from "@/models/Order";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
     await db();
     const { products, totalPrice } = await req.json();
-    const id = req.nextUrl.searchParams.get("id");
     const ExistUser = await User.findOne({ _id: id });
     const order = await Order.create({
       products,

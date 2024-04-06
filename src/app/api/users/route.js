@@ -15,9 +15,9 @@ export async function GET(req) {
 }
 
 export async function PUT(req) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
     await db();
-    const id = req.nextUrl.searchParams.get("id");
     let user = await User.findByIdAndUpdate(id, await req.json(), {
       new: true,
       runValidators: true,

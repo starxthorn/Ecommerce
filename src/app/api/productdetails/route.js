@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 import db from "@/lib/db";
 
 export async function GET(req) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
     await db();
-    const id = req.nextUrl.searchParams.get("id");
     const pro = await Product.findOne({ _id: id });
     return NextResponse.json(
       {

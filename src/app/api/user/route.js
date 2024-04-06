@@ -3,9 +3,9 @@ import User from "@/models/User";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
     await db();
-    const id = req.nextUrl.searchParams.get("id");
     const user = await User.findOne({ _id: id });
     return NextResponse.json({
       response: user,
@@ -16,9 +16,9 @@ export async function GET(req) {
 }
 
 export async function DELETE(req) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
     await db();
-    const id = req.nextUrl.searchParams.get("id");
     await User.findByIdAndDelete(id);
     return NextResponse.json({
       message: "User deleted",
@@ -29,9 +29,9 @@ export async function DELETE(req) {
 }
 
 export async function PUT(req) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
     await db();
-    const id = req.nextUrl.searchParams.get("id");
     let user = await User.findByIdAndUpdate(id, await req.json(), {
       new: true,
       runValidators: true,

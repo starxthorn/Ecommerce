@@ -3,9 +3,9 @@ import db from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
     await db();
-    const id = req.nextUrl.searchParams.get("id");
     const order = await Order.findOne({ _id: id })
       .populate("products.productId")
       .populate("user");

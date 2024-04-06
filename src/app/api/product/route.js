@@ -53,9 +53,9 @@ export async function GET(req) {
 }
 
 export async function PUT(req) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
     await db();
-    const id = req.nextUrl.searchParams.get("id");
     let pro = await Product.findByIdAndUpdate(id, await req.json(), {
       new: true,
       runValidators: true,
@@ -74,9 +74,9 @@ export async function PUT(req) {
 }
 
 export async function DELETE(req) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
     await db();
-    const id = req.nextUrl.searchParams.get("id");
     await Product.findByIdAndDelete(id);
     return NextResponse.json(
       {
