@@ -71,7 +71,7 @@ const page = ({ params }) => {
   return (
     <>
       <main className="wrapper w-full h-full flex items-center justify-center mb-8">
-        <form className="flex flex-col w-96 mt-14 px-4" onSubmit={handlesubmit}>
+        <form className="flex flex-col w-96 mt-14 px-6" onSubmit={handlesubmit}>
           <h1 className="lg:text-4xl text-2xl font-semibold">
             Update User Profile
           </h1>

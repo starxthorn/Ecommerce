@@ -144,7 +144,7 @@ const page = () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 rounded-lg mx-5">
             <BarChart />
-            <div className="h-[47vh] border lg:pt-8 pt-4 border-gray-300 rounded-lg bg-white">
+            <div className="h-auto border border-gray-300 rounded-lg bg-white">
               {users
                 ?.map((data, id) => {
                   return (
@@ -155,7 +155,7 @@ const page = () => {
                       >
                         <img
                           src={data?.avatar}
-                          className="rounded-full lg:w-16 w-12"
+                          className="rounded-full lg:w-14 w-12"
                           alt="user"
                         />
                         <h1 className="capitalize font-semibold lg:text-xl text-md text-black">

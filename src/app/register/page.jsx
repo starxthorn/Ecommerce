@@ -46,9 +46,14 @@ const page = () => {
   return (
     <>
       <main className="wrapper w-full h-full flex items-center justify-center mb-8">
-        <form className="flex flex-col w-96 mt-14 px-4" onSubmit={handlesubmit}>
-          <h1 className="lg:text-4xl text-3xl font-semibold">Sign Up to Aexpop</h1>
-          <label htmlFor="name" className="mt-9 text-xl font-medium">
+        <form
+          className="flex flex-col w-96 mt-20 lg:mt-28 px-5"
+          onSubmit={handlesubmit}
+        >
+          <h1 className="lg:text-4xl text-2xl font-semibold">
+            Register to Aexpop
+          </h1>
+          <label htmlFor="name" className="mt-9 lg:text-xl text-lg font-medium">
             Name
           </label>
           <input
@@ -59,7 +64,10 @@ const page = () => {
             onChange={handlechange}
             className="mt-2 w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
-          <label htmlFor="email" className="mt-6 text-xl font-medium">
+          <label
+            htmlFor="email"
+            className="mt-6 lg:text-xl text-lg font-medium"
+          >
             Email
           </label>
           <input
@@ -70,7 +78,10 @@ const page = () => {
             onChange={handlechange}
             className="mt-2 w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
-          <label htmlFor="password" className="mt-6 text-xl font-medium">
+          <label
+            htmlFor="password"
+            className="mt-6 lg:text-xl text-lg font-medium"
+          >
             Password
           </label>
           <input
@@ -81,7 +92,10 @@ const page = () => {
             onChange={handlechange}
             className="mt-2 w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
-          <label htmlFor="location" className="mt-6 text-xl font-medium">
+          <label
+            htmlFor="location"
+            className="mt-6 lg:text-xl text-lg font-medium"
+          >
             Location
           </label>
           <input
@@ -92,7 +106,10 @@ const page = () => {
             onChange={handlechange}
             className="mt-2 w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
-          <label htmlFor="location" className="mt-6 text-xl font-medium">
+          <label
+            htmlFor="location"
+            className="mt-6 lg:text-xl text-lg font-medium"
+          >
             Phone No
           </label>
           <input
@@ -103,7 +120,7 @@ const page = () => {
             onChange={handlechange}
             className="mt-2 w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
           />
-          <h1 className="text-xl mt-6">
+          <h1 className="lg:text-xl text-lg mt-6">
             Have an account{" "}
             <Link href="/login" className="color-blue">
               <span className="text-blue-600">Sign In</span>

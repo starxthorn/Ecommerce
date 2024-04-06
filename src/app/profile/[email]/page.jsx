@@ -39,7 +39,7 @@ const page = ({ params }) => {
   ) : (
     <>
       <main className="wrapper w-full h-full flex items-center justify-center mb-8">
-        <section className="flex flex-col w-96 mt-8 px-4">
+        <section className="flex flex-col w-96 mt-8 px-6">
           <label htmlFor="name" className="text-xl mt-4">
             Name
           </label>

@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Aexpop | Home",
+  title: "Aexpop",
   description:
     "The best tech shop in Pakistan having quality products on reasonable prices",
 };

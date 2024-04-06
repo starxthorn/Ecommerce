@@ -14,7 +14,9 @@ export default function Navbar() {
   const pathname = usePathname();
   const { isAdmin, fav, cart } = useAuth();
 
-  return pathname.startsWith("/admin") ? (
+  return pathname.startsWith("/admin") ||
+    pathname === "/login" ||
+    pathname === "/register" ? (
     <></>
   ) : (
     <>
