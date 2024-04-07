@@ -24,7 +24,7 @@ const page = () => {
     <Loader />
   ) : (
     <>
-      <section className="flex flex-col justify-center text-center items-center mt-20 lg:gap-4 gap-2">
+      <section className="flex flex-col justify-center text-center items-center lg:mt-20 mt-48 lg:gap-4 gap-2">
         <img src="success.png" alt="success" className="w-20" />
         <h1 className="lg:text-4xl font-semibold text-black text-xl">
           Order Placed Successfully

@@ -2,9 +2,12 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../../components/AdminNav";
 import Loader from "@/app/components/Loader";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const page = ({ params }) => {
   const [orderdetails, setOrderdetails] = useState({});
+  const router = useRouter();
 
   const getSingleTrans = async () => {
     try {
@@ -25,6 +28,20 @@ const page = ({ params }) => {
     getSingleTrans();
   }, []);
 
+  const handleDelete = async () => {
+    try {
+      const res = await fetch(`/api/orderDetails?id=${params.id}`, {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        toast("Order Deleted");
+        router.push("/admin/transiction");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <main className="flex">
@@ -41,7 +58,7 @@ const page = ({ params }) => {
                 <h1 className="lg:text-xl text-sm font-semibold lg:mt-5 mt-3">
                   Products:
                 </h1>
-                <div className="grid lg:grid-cols-4 grid-cols-2 lg:mt-3 mt-1 gap-3">
+                <div className="grid lg:grid-cols-5 grid-cols-2 lg:mt-3 mt-1 gap-3">
                   {orderdetails?.products?.map((data, id) => {
                     return (
                       <>
@@ -58,7 +75,7 @@ const page = ({ params }) => {
                             {data.productId?.title}
                           </h1>
                           <h1 className="lg:text-xl text-sm mt-2 font-semibold mb-3">
-                            {data.productId?.newPrice}
+                            {data.productId?.newPrice} x {data.quantityOfPro}
                           </h1>
                         </div>
                       </>
@@ -74,6 +91,15 @@ const page = ({ params }) => {
                 <h1 className="lg:text-xl text-sm font-semibold lg:mt-4 mt-2">
                   Location: {orderdetails.user?.location}
                 </h1>
+                <h1 className="lg:text-xl text-sm font-semibold lg:mt-4 mt-2">
+                  Total Amount: {orderdetails.totalPrice}
+                </h1>
+                <button
+                  onClick={handleDelete}
+                  className="bg-red-500 px-3 py-2 lg:text-xl text-white rounded-md mt-4 text-md"
+                >
+                  Delete
+                </button>
               </div>
             </>
           )}

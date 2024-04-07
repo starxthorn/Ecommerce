@@ -87,7 +87,7 @@ const AdminNav = () => {
             >
               <TfiReload className="lg:text-4xl text-2xl" />
               <h1 className="lg:text-2xl lg:block hidden text-xl font-semibold">
-                Transictions
+                Transactions
               </h1>
             </Link>
           </li>

@@ -50,20 +50,21 @@ const page = () => {
           className="w-full bg-white"
           style={{ height: "100vh", overflow: "scroll" }}
         >
-          <div className="flex justify-between items-center">
-            <h1 className="lg:block lg:text-4xl md:text-2xl md:block hidden font-semibold mb-10 mx-8 mt-8">
-              Your Products on <span className="text-indigo-500">Aexpop</span>{" "}
-              Application{" "}
-            </h1>
-            <Link
-              href="/admin/newPro"
-              className="w-full lg:w-auto md:w-auto lg:mx-0 lg:mb-0 mx-4 mb-2"
-            >
+          <div className="w-full flex gap-4 px-4 lg:justify-end justify-center lg:px-8 my-5 items-center">
+            <Link href="/admin/newPro">
               <button
                 onClick={handleClick}
-                className="lg:mb-10 md:mb-10 lg:mr-5 md:mr-5 lg:px-4 md:px-4 lg:w-auto md:w-auto w-full mt-5 bg-indigo-500 py-3 text-xl hover:bg-indigo-400 transition rounded-md text-white"
+                className="lg:px-4 px-3 bg-indigo-500 py-3 lg:text-xl text-md hover:bg-indigo-400 transition rounded-md text-white"
               >
                 New Product
+              </button>
+            </Link>
+            <Link href="/admin/category">
+              <button
+                onClick={handleClick}
+                className="lg:px-4 px-3 bg-indigo-500 py-3 lg:text-xl text-md hover:bg-indigo-400 transition rounded-md text-white"
+              >
+                New Category
               </button>
             </Link>
           </div>

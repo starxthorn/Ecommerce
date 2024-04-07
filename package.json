@@ -23,6 +23,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "react-infinite-scroller": "^1.2.6",
     "react-toastify": "^10.0.5",
     "stripe": "^14.23.0"
   },

@@ -3,6 +3,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useAuth } from "@/app/components/ContextApi";
+import { toast } from "react-toastify";
 
 const AdminItem = (props) => {
   const { removeinLC } = useAuth();
@@ -19,11 +20,12 @@ const AdminItem = (props) => {
       }
       if (res.ok) {
         const data = await res.json();
+        toast("User deleted");
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
     }
-    window.location.reload();
   };
 
   return (
@@ -45,7 +47,7 @@ const AdminItem = (props) => {
             )}
           </div>
         </Link>
-        <h4 className="text-sm lg:text-xl md:text-lg">{props.email}</h4>
+        <h4 className="text-sm lg:text-xl md:text-lg">{props.name}</h4>
         <MdDeleteOutline
           onClick={handledelete}
           className="md:text-4xl cursor-pointer lg:text-5xl lg:p-2 transition hover:bg-red-400 text-3xl p-1 bg-red-500 text-white rounded-md justify-self-end"

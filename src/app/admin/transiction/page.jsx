@@ -34,28 +34,30 @@ const page = () => {
     <>
       <main className="flex">
         <AdminNav />
-        {orders?.length === 0 || isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <div className="lg:m-7 m-4 w-full h-[40vh] bg-white rounded-lg">
-              {orders
-                ?.map((data, id) => {
-                  return (
-                    <Trans
-                      clickOnImg={handleClick}
-                      id={id}
-                      tid={data._id}
-                      name={data.user?.name}
-                      location={data.user?.location}
-                      phone={data.user?.phone}
-                    />
-                  );
-                })
-                .reverse()}
-            </div>
-          </>
-        )}
+        <section className="w-full overflow-scroll h-[100vh]">
+          {orders?.length === 0 || isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <div className="lg:m-7 m-4 bg-white rounded-lg">
+                {orders
+                  ?.map((data, id) => {
+                    return (
+                      <Trans
+                        clickOnImg={handleClick}
+                        id={id}
+                        tid={data._id}
+                        name={data.user?.name}
+                        location={data.user?.location}
+                        phone={data.user?.phone}
+                      />
+                    );
+                  })
+                  .reverse()}
+              </div>
+            </>
+          )}
+        </section>
       </main>
     </>
   );

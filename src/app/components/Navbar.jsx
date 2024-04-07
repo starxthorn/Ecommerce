@@ -7,23 +7,70 @@ import { useAuth } from "./ContextApi";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import "../globals.css";
-import Loader from "./Loader";
+import { IoMenu } from "react-icons/io5";
 
 export default function Navbar() {
   const session = useSession();
   const pathname = usePathname();
   const { isAdmin, fav, cart } = useAuth();
+  const [category, setCategory] = useState([]);
+  const [menu, setMenu] = useState(false);
+
+  const getAllcategories = async () => {
+    try {
+      const res = await fetch(`/api/category`, {
+        method: "GET",
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setCategory(data.response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllcategories();
+  }, []);
 
   return pathname.startsWith("/admin") ||
     pathname === "/login" ||
-    pathname === "/register" ? (
+    pathname === "/register" ||
+    pathname === "/success" ||
+    pathname === "/products" ||
+    pathname.startsWith("/productdetails") ? (
     <></>
   ) : (
     <>
       <header className="container relative mx-auto flex items-center justify-between px-3 py-4">
-        <Link href="/">
-          <h1 className="lg:text-4xl text-2xl font-semibold">Aexpop</h1>
-        </Link>
+        <div className="flex items-center gap-2 justify-center">
+          <IoMenu
+            onClick={() => setMenu(true)}
+            className="lg:hidden text-2xl cursor-pointer"
+          />
+          <Link href="/">
+            <h1 className="lg:text-4xl text-2xl font-semibold">Stall Mart</h1>
+          </Link>
+        </div>
+        <div
+          className={`lg:flex ${menu ? "menu-bar py-5 pt-7" : ""} items-center justify-center hidden lg:gap-6 gap-3 capitalize`}
+        >
+          <IoMenu className="absolute lg:hidden left-3 text-2xl top-6" onClick={() => setMenu(false)} />
+          {category 
+            ?.map((data, id) => {
+              return (
+                <>
+                  <Link href={`/category/${data.name}`} key={id} onClick={() => setMenu(false)}>
+                    <h1 className="text-gray-600 transition hover:text-black lg:text-xl text-md font-semibold">
+                      {data.name}
+                    </h1>
+                  </Link>
+                </>
+              );
+            })
+            .slice(0, 5)}
+        </div>
         <nav>
           <ul className="flex items-center justify-center gap-4">
             <Link href="/favourite" className="relative">

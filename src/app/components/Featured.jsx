@@ -1,8 +1,6 @@
 "use client";
 import React, { Suspense, lazy, useEffect, useState } from "react";
 const Item = lazy(() => import("../components/Item"));
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import Link from "next/link";
 import Loader from "./Loader";
 
 const Featured = () => {
@@ -39,7 +37,7 @@ const Featured = () => {
             Featured Products Here
           </h1>
           <h2 className="text-black lg:text-xl text-sm mt-2">
-            Aexpop offers you the best tech products whole over the Pakistan
+            Stall Mart offers you the best tech products whole over the Pakistan
             with guarante <br></br> Best condition products and new products are
             also available
           </h2>
@@ -63,15 +61,6 @@ const Featured = () => {
               .reverse()}
           </div>
         </Suspense>
-        <Link
-          href="/products"
-          className="flex lg:my-12 mt-10 mb-10 text-center justify-center items-center"
-        >
-          <h1 className="lg:text-2xl text-xl text-indigo-700 text-center">
-            More
-          </h1>
-          <MdOutlineKeyboardArrowRight className="text-3xl font-semibold text-indigo-700" />
-        </Link>
       </section>
     </>
   );

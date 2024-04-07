@@ -16,3 +16,16 @@ export async function GET(req) {
     console.log(error);
   }
 }
+
+export async function DELETE(req) {
+  const id = req.nextUrl.searchParams.get("id");
+  try {
+    await db();
+    await Order.findByIdAndDelete(id);
+    return NextResponse.json({
+      message: "Order deleted",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}

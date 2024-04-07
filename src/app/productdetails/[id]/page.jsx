@@ -2,6 +2,9 @@
 import { useAuth } from "@/app/components/ContextApi";
 import Loader from "@/app/components/Loader";
 import React, { useEffect, useRef, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const page = ({ params }) => {
   const imageRef = useRef();
@@ -11,6 +14,7 @@ const page = ({ params }) => {
   const [image, setImage] = useState(productdetails.images);
   const [quantity, setQuantity] = useState(1);
   // const [isLoading, setisLoading] = useState(false);
+  const router = useRouter();
 
   const getDetails = async () => {
     try {
@@ -51,6 +55,10 @@ const page = ({ params }) => {
     <>
       <section className="text-gray-600">
         <div className="container px-3 lg:py-14 mt-3 lg:mt-0 mx-auto pb-5">
+          <FaArrowLeft
+            className="lg:text-4xl lg:mb-10 mb-5 mt-3 lg:mt-0 text-2xl cursor-pointer text-gray-500 transition hover:text-black"
+            onClick={() => router.back()}
+          />
           <div className="flex flex-col lg:flex-row items-start justify-center lg:gap-8">
             <div className="lg:w-1/2 md:w-1/2 w-full flex flex-col justify-center items-center">
               <img
@@ -86,10 +94,7 @@ const page = ({ params }) => {
                 )}
               </div>
             </div>
-            <div
-              // style={{ width: "40rem" }}
-              className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0"
-            >
+            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h1 className="text-gray-900 capitalize text-xl lg:text-3xl title-font font-semibold mb-1">
                 {productdetails.title}
               </h1>

@@ -13,6 +13,25 @@ const page = () => {
   const [Image, setImage] = useState([]);
   const { isAdmin } = useAuth();
   const pathname = usePathname();
+  const [Allcat, setAllCat] = useState([]);
+
+  const getAllCategories = async () => {
+    try {
+      const res = await fetch("/api/category", {
+        method: "GET",
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setAllCat(data.response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllCategories();
+  }, []);
 
   useEffect(() => {
     console.log(isAdmin);
@@ -143,12 +162,13 @@ const page = () => {
               required
               className="py-2 rounded-md px-1 border-2 border-gray-200 focus:border-gray-300 outline-none"
             >
-              <option value="mobiles">Mobiles</option>
-              <option value="cables">Cables</option>
-              <option value="laptops">Laptops</option>
-              <option value="processors">Processors</option>
-              <option value="motherboards">Motherboards</option>
-              <option value="graphic cards">Graphic Cards</option>
+              {Allcat?.map((data, id) => {
+                return (
+                  <>
+                    <option key={id} value={data.name}>{data.name}</option>
+                  </>
+                );
+              })}
             </select>
             <label htmlFor="oldPrice" className="text-xl">
               Old Price
